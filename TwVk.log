@@ -1,0 +1,19 @@
+2013-07-02 01:42:57.114 INFO Script started
+2013-07-02 01:42:57.114 INFO Twitter authorization successful
+2013-07-02 01:42:57.855 ERROR Main exception
+Traceback (most recent call last):
+  File "C:\Users\zzeneg\Documents\GitHub\TwVk\TwVk.py", line 40, in main
+    r = urllib2.urlopen(req, urllib.urlencode(param), 90)
+  File "C:\Python27\lib\urllib2.py", line 127, in urlopen
+    return _opener.open(url, data, timeout)
+  File "C:\Python27\lib\urllib2.py", line 410, in open
+    response = meth(req, response)
+  File "C:\Python27\lib\urllib2.py", line 523, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "C:\Python27\lib\urllib2.py", line 448, in error
+    return self._call_chain(*args)
+  File "C:\Python27\lib\urllib2.py", line 382, in _call_chain
+    result = func(*args)
+  File "C:\Python27\lib\urllib2.py", line 531, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+HTTPError: HTTP Error 401: Unauthorized

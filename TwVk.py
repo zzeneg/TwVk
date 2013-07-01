@@ -79,8 +79,8 @@ def handleTweet(tweet):
         for url in urls:
             text = text.replace(url["url"], url["expanded_url"])
             #if it's EyeEm photo - get it id
-            if url["expanded_url"].startswith("http://www.eyeem.com/p/"):
-                eyeEmId = url["expanded_url"].replace("http://www.eyeem.com/p/", "")
+            if url["expanded_url"].startswith("http://eyeem.com/p/"):
+                eyeEmId = url["expanded_url"].replace("http://eyeem.com/p/", "")
                 logging.info('EyeEm Id: ' + eyeEmId)
                 photoUrl = getEyeEmPhotoUrlById(eyeEmId)
                 logging.info('Photo found. Url: ' + photoUrl)
@@ -114,7 +114,7 @@ def uploadPhoto(fileUrl):
     logging.info('Photo saved on local drive')
     #uploading photo to VK
     files = {'photo': open('temp.jpg', 'rb')}
-    response = requests.post(uploadUrl, files = files).json
+    response = requests.post(uploadUrl, files = files).json()
     logging.info('Photo uploaded')
     #add photo in wall album
     response = vkMethod('photos.saveWallPhoto', response)
@@ -127,7 +127,7 @@ def vkMethod(method, data={}):
     url = 'https://api.vk.com/method/%s.json' % (method)
     data.update({'access_token': vkToken})
 
-    response = requests.post(url, data).json
+    response = requests.post(url, data).json()
 
     if 'error' in response:
         error = response['error']
@@ -138,7 +138,7 @@ def vkMethod(method, data={}):
 #Method getting photo URL from EyeEm
 def getEyeEmPhotoUrlById(photoId):
     url = "https://www.eyeem.com/api/v2/photos/{0}?access_token={1}".format(photoId, eyeEmToken)
-    response = requests.get(url).json
+    response = requests.get(url).json()
     return response['photo']['photoUrl']
 
 main()
