@@ -46,8 +46,7 @@ def main():
                 length = ""
                 while True:
                     c = r.read(1)
-                    if c == "\n": break
-                    if c == "": raise Exception
+                    if (c == "\n") or (c == ""): break
                     length += c
                 length = length.strip()
                 if not length.isdigit(): continue
